@@ -1,3 +1,3 @@
-## Welcome to My JavaScript Repository!
+## Welcome to My PHP Repository!
 
-Here you will find my JavaScript projects (completed or in progress).
+Here you will find my PHP projects (completed or in progress).
