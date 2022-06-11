@@ -1,4 +1,4 @@
-## VetDB (Completed - 08/11/2021)
+## VetDB (Completed - 15/05/2022)
 
 Webpage that allows a user to manage records of pets that are treated in the clinic, details of their owners and assign responsible vet doctor. 
 The main purpose of the project is to apply essential CRUD operations (create, read, update, and delete) for creating and managing persistent data (persistent data storage).
