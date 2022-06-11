@@ -5,6 +5,6 @@ Main purpose of the project is to apply essential CRUD operations (create, read,
 
 ![webpage_snapshot](https://user-images.githubusercontent.com/79474744/173185571-459c4c09-58c9-40d7-adae-35fe0a3d9f0c.PNG)
 
-###### *Dependencies:
-- XAMPP
-- phpMyAdmin*
+**Dependencies:**
+- XAMPP (Apache, MySQL)
+- phpMyAdmin
