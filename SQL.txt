@@ -1,0 +1,72 @@
+/*  
+    I assume that the "room" and "vet" data is inserted when DB and Tables are created
+    and any changes to that data will be only processed by DB Admin. Same applies to
+    the "pet_owner" and "addresses" tables with the difference that the user will specify
+    the new owner and owners address when creating new pet record.
+*/
+
+CREATE DATABASE vet_clinic_db;
+
+CREATE TABLE room (
+    VetRoom varchar(50) CHECK (VetRoom <> ''),
+    RoomPhone varchar(50) CHECK (RoomPhone <> ''),
+    PRIMARY KEY (VetRoom)
+);
+
+CREATE TABLE addresses (
+    AddressID int NOT NULL AUTO_INCREMENT,
+    Street varchar(255) CHECK (Street <> ''),
+    City varchar(50) CHECK (City <> ''),
+    County varchar(50) CHECK (County <> ''),
+    Country varchar(50) CHECK (Country <> ''),
+    PostCode varchar(50) CHECK (PostCode <> ''),
+    PRIMARY KEY (AddressID)
+);
+
+CREATE TABLE vet (
+    VetID int NOT NULL AUTO_INCREMENT,
+    VetFirstName varchar(50) CHECK (VetFirstName <> ''),
+    VetLastName varchar(50) CHECK (VetLastName <> ''),
+    VetRoom varchar(50),
+    PRIMARY KEY (VetID),
+    FOREIGN KEY (VetRoom) REFERENCES room(VetRoom)
+);
+
+CREATE TABLE pet_owner (
+    OwnerID int NOT NULL AUTO_INCREMENT,
+    OwnerFirstName varchar(50) CHECK (OwnerFirstName <> ''),
+    OwnerLastName varchar(50) CHECK (OwnerLastName <> ''),
+    OwnerPhone varchar(50) CHECK (OwnerPhone <> ''),
+    AddressID int,
+    PRIMARY KEY (OwnerID),
+    FOREIGN KEY (AddressID) REFERENCES addresses(AddressID)
+);
+
+CREATE TABLE pet (
+    PetID int NOT NULL AUTO_INCREMENT,
+    PetName varchar(50) CHECK (PetName <> ''),
+    PetSpecies varchar(50) CHECK (PetSpecies <> ''),
+    PetWeight DECIMAL(18, 2) CHECK (PetWeight <> ''),
+    PetAilment varchar(50) CHECK (PetAilment <> ''),
+    OwnerID int,
+    VetID int,
+    PRIMARY KEY (PetID),
+    FOREIGN KEY (OwnerID) REFERENCES pet_owner(OwnerID),
+    FOREIGN KEY (VetID) REFERENCES vet(VetID)
+);
+
+INSERT INTO room (VetRoom, RoomPhone)
+VALUES  ('R001', 0892497171),
+        ('R002', 0892497172),
+        ('R101', 0892497173),
+        ('R102', 0892497174),
+        ('R301', 0892497175),
+        ('R302', 0892497176);
+
+INSERT INTO vet (VetFirstName, VetLastName, VetRoom)
+VALUES  ('John', 'Smith', 'R001'),
+        ('Mike', 'Daley', 'R002'),
+        ('Anna', 'Schwalf', 'R101'),
+        ('Marcus', 'Grable', 'R102'),
+        ('Jennifer', 'Spatten', 'R301'),
+        ('Dmitry', 'Koz', 'R302');
